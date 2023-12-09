@@ -159,11 +159,15 @@
                             </div>
                         </div>
                         <div class="relative mb-4">
-                            <select name="quiz_size" id="quiz_size" wire:model="quizSize" class="max-w-full block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
-                                @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option> @endfor
+                            <select name="level" id="level" wire:model="quizLevel" class="max-w-full block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
+                                <option value="">Select a Level</option>
+                                <option value="BEGINNER">Beginner</option>
+                                <option value="INTERMEDIATE">Intermediate</option>
+                                <option value="ADVANCED">Advanced</option>
                             </select>
                             @error('quizSize') <span class="text-red-400 text-xs">{{ $message }}</span> @enderror
                         </div>
+                       
                         <button type="submit" class="block w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Start Quiz</button>
                     </form>
                 </div>

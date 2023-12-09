@@ -49,7 +49,6 @@ class AppUserController extends Controller
         );
     }
 
-
     public function deleteUserQuiz($id)
     {
         $quizheader = QuizHeader::findOrFail($id);

@@ -28,10 +28,16 @@ class UserQuizlv extends Component
     public $learningMode = false;
     public $quizInProgress = false;
     public $answeredQuestions = [];
+    public $quizLevel = 'Beginner';
+
+    const BEGINNER = 5;
+    const INTERMEDIATE = 10;
+    const ADVANCED = 12;
 
     protected $rules = [
         'sectionId' => 'required',
-        'quizSize' => 'required|numeric',
+        // 'quizSize' => 'required|numeric',
+        'quizLevel' => 'required|string'
     ];
 
 
@@ -122,6 +128,17 @@ class UserQuizlv extends Component
 
     public function startQuiz()
     {
+        if($this->quizLevel == 'BEGINNER'){
+            $this->quizSize = self::BEGINNER;
+        }    
+        
+        if($this->quizLevel == 'INTERMEDIATE'){
+            $this->quizSize = self::INTERMEDIATE;
+        }    
+
+        if($this->quizLevel == 'ADVANCED'){
+            $this->quizSize = self::ADVANCED;
+        }    
 
         // Create a new quiz header in quiz_headers table and populate initial quiz information
         // Keep the instance in $this->quizid veriable for later updates to quiz.
