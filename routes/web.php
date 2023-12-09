@@ -91,4 +91,10 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->g
 
     Route::get('/triangle', [UserLessonController::class, 'triangle'])
     ->name('triangle');
+
+    Route::get('/rectangle', [UserLessonController::class, 'rectangle'])
+    ->name('rectangle');
+
+    Route::get('/square', [UserLessonController::class, 'square'])
+    ->name('square');
 });

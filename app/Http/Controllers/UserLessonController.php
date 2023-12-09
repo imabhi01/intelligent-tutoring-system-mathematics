@@ -17,4 +17,12 @@ class UserLessonController extends Controller
     public function triangle(){
         return view('lessons.triangle');
     }
+ 
+    public function rectangle(){
+        return view('lessons.rectangle');
+    }
+    
+    public function square(){
+        return view('lessons.square');
+    }
 }
