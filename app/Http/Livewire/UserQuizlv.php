@@ -30,13 +30,16 @@ class UserQuizlv extends Component
     public $answeredQuestions = [];
     public $quizLevel = 'Beginner';
 
+    public $inCorrectQuizAnswers;
+    public $showFeedback = false;
+
     const BEGINNER = 5;
     const INTERMEDIATE = 10;
     const ADVANCED = 12;
 
     protected $rules = [
         'sectionId' => 'required',
-        // 'quizSize' => 'required|numeric',
+        // 'quizSize' => 'required|numeric', // not required for now
         'quizLevel' => 'required|string'
     ];
 
@@ -50,6 +53,14 @@ class UserQuizlv extends Component
         $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
             ->where('is_correct', '1')
             ->count();
+
+        $this->inCorrectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
+            ->where('is_correct', '0')
+            ->count();
+        
+        if($this->inCorrectQuizAnswers >= 1){
+            $this->showFeedback = true;
+        }
 
         // Caclculate score for upding the quiz_header table before finishing the quid.
         $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
@@ -131,7 +142,7 @@ class UserQuizlv extends Component
         if($this->quizLevel == 'BEGINNER'){
             $this->quizSize = self::BEGINNER;
         }    
-        
+
         if($this->quizLevel == 'INTERMEDIATE'){
             $this->quizSize = self::INTERMEDIATE;
         }    
