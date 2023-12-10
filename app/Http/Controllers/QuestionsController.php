@@ -26,19 +26,23 @@ class QuestionsController extends Controller
     public function storeQuestion(Section $section, Request $request)
     {
         $section = $section;
+        
         $data = $request->validate([
             'question' => ['required', Rule::unique('questions')],
             'explanation' => 'required',
+            'keyword' => 'required',
             'is_active' => 'required',
+            'is_level' => 'required',
             'answers.*.answer' => 'required',
             'answers.*.is_checked' => 'present'
         ]);
 
-
         $question = Question::create([
             'question' => $request->question,
             'explanation' => $request->explanation,
+            'keyword' => $request->keyword,
             'is_active' => $request->is_active,
+            'is_level' => $request->is_level,
             'user_id' => Auth::id(),
             'section_id' => $section->id,
         ]);

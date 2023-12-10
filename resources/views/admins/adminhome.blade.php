@@ -58,24 +58,24 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-5 mx-auto">
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
-                <!-- <div class="flex items-center p-1 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="flex items-center p-1 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                     <div class="p-4 w-full">
                         <div class="container px-5 mx-auto" id="chart">
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- Card -->
-                <!-- <div class="flex items-center p-1 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="flex items-center p-1 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                     <div class="p-4 w-full">
                         <div class="container px-5 mx-auto" id="chart2">
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </section>
     @push('js')
-    <!-- <script>
+    <script>
         const GlobalQuizChart = new Chartisan({
             el: '#chart',
             url: "@chart('global_quizzes')",
@@ -114,6 +114,6 @@
                 .stepSize(25)
                 .responsive()
         });
-    </script> -->
+    </script>
     @endpush
 </x-app-layout>

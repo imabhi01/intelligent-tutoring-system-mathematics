@@ -17,7 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('question');
             $table->text('explanation');
+            $table->string('keyword');
             $table->enum('is_active', ['0', '1'])->default('1');
+            $table->enum('is_level', ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'])->default('BEGINNER');
             $table->foreignId('section_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

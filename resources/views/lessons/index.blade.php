@@ -24,7 +24,7 @@
                                 <div class="border-2 border-gray-200 px-4 py-6 rounded-lg bg-white">
                                     <a href="{{ route('triangle') }}">
                                         <svg viewBox="0 0 100 100">
-                                            <polygon points="50,10 10,100 90,100" stroke="black" stroke-width="1" fill="white" />
+                                            <polygon points="50,10 10,90 90,90" stroke="black" stroke-width="1" fill="white" />
                                         </svg>
                                         <h2 class="title-font font-medium text-xl text-gray-900">Triangle</h2>
                                     </a>
@@ -34,7 +34,7 @@
                                 <div class="border-2 border-gray-200 px-4 py-6 rounded-lg bg-white">
                                     <a href="{{ route('rectangle') }}">
                                         <svg viewBox="0 0 100 100">
-                                            <rect x="10" y="10" width="80" height="80" stroke="black" stroke-width="1" fill="white" />
+                                            <rect x="10" y="10" width="70" height="80" stroke="black" stroke-width="1" fill="white" />
                                         </svg>
                                         <h2 class="title-font font-medium text-xl text-gray-900">Rectangle</h2>
                                     </a>
@@ -47,9 +47,9 @@
                                             <rect x="20" y="20" width="60" height="60" stroke="black" stroke-width="1" fill="white" />
                                         </svg>
                                         <h2 class="title-font font-medium text-xl text-gray-900">Square</h2>
-                                    </a>                                </div>
+                                    </a>                                
+                                </div>
                             </div>
-                            
                         </div>
                     </div>
                 </section>

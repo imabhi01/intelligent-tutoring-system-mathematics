@@ -28,10 +28,11 @@ class UserQuizlv extends Component
     public $learningMode = false;
     public $quizInProgress = false;
     public $answeredQuestions = [];
-    public $quizLevel = 'Beginner';
+    public $quizLevel;
 
     public $inCorrectQuizAnswers;
     public $showFeedback = false;
+    public $feedbackKeywordTypes = [];  // Topics that were not correct answers
 
     const BEGINNER = 5;
     const INTERMEDIATE = 10;
@@ -55,12 +56,18 @@ class UserQuizlv extends Component
             ->count();
 
         $this->inCorrectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
-            ->where('is_correct', '0')
-            ->count();
-        
-        if($this->inCorrectQuizAnswers >= 1){
-            $this->showFeedback = true;
+            ->where('is_correct', '0')->get();
+
+        foreach($this->inCorrectQuizAnswers as $incorrect){
+            $question = Question::find($incorrect->question_id);
+            if(!in_array($question->keyword, $this->feedbackKeywordTypes)){
+                $this->feedbackKeywordTypes[] = $question->keyword;
+            }
         }
+
+        // if($this->inCorrectQuizAnswers >= 1){
+            $this->showFeedback = true;
+        // }
 
         // Caclculate score for upding the quiz_header table before finishing the quid.
         $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
@@ -119,6 +126,7 @@ class UserQuizlv extends Component
 
         $question = Question::where('section_id', $this->sectionId)
             ->whereNotIn('id', $this->answeredQuestions)
+            ->where('is_level', $this->quizLevel)
             ->with('answers')
             ->inRandomOrder()
             ->first();

@@ -112,53 +112,70 @@
     @endif
 
     @if($showFeedback)
-    <section class="text-gray-600 body-font">
-        <div class="bg-white border-2 border-gray-300 shadow overflow-hidden sm:rounded-lg">
-            <div class="container px-5 py-5 mx-auto">
-                <div class="text-center mb-5 justify-center">
-                    <h1 class=" sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Feedback for Quiz</h1>
-                    <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> Please, go through few of our lessons in Geometry to improve your next quiz.</p>
-                </div>
-                <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-                    <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill=" none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                            
-                        </div>
+        <section class="text-gray-600 body-font">
+            <div class="bg-white border-2 border-gray-300 shadow overflow-hidden sm:rounded-lg mt-3">
+                <div class="container px-5 py-5 mx-auto">
+                    <div class="text-center mb-5 justify-center">
+                        <h1 class=" sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Feedback for Quiz</h1>
+                        <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> Please, go through few of our lessons in Geometry to improve your knowledge to perform better at your next quiz.</p>
                     </div>
-                    <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                        </div>
+                    <div class="flex flex-row flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+                        @foreach($feedbackKeywordTypes as $feedback)
+                            @if($feedback == 'circle')
+                                <div class="p-2 sm:w-1/2 w-full">
+                                    <div class="justify-center bg-gray-100 rounded flex p-4 h-full items-center">       
+                                        <a href="{{ route('circle') }}" target="_blank">
+                                            <svg viewBox="0 0 100 100">
+                                                <circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="white" />
+                                            </svg>
+                                            <h2 class="title-font font-medium text-xl text-gray-900">Concepts of Circle</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($feedback == 'rectangle')
+                                <div class="p-2 sm:w-1/2 w-full">
+                                    <div class="justify-center bg-gray-100 rounded flex p-4 h-full items-center">
+                                        <a href="{{ route('rectangle') }}" target="_blank">
+                                            <svg viewBox="0 0 100 100">
+                                                <rect x="10" y="20" width="86" height="60" stroke="black" stroke-width="1" fill="white"></rect>
+                                                <!-- <rect x="10" y="10" width="70" height="70" stroke="black" stroke-width="1" fill="white" /> -->
+                                            </svg>
+                                            <h2 class="title-font font-medium text-xl text-gray-900">Concepts of Rectangle</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($feedback == 'triangle')
+                                <div class="p-2 sm:w-1/2 w-full">
+                                    <div class="justify-center bg-gray-100 rounded flex p-4 h-full items-center">
+                                        <a href="{{ route('triangle') }}" target="_blank">
+                                            <svg viewBox="0 0 100 100">
+                                                <polygon points="50,20 10,90 90,90" stroke="black" stroke-width="1" fill="white" />
+                                            </svg>
+                                            <h2 class="title-font font-medium text-xl text-gray-900">Concepts of Triangle</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($feedback == 'square')
+                                <div class="p-2 sm:w-1/2 w-full">
+                                    <div class="justify-center bg-gray-100 rounded flex p-4 h-full items-center">
+                                        <a href="{{ route('square') }}" target="_blank">
+                                            <svg viewBox="0 0 100 100">
+                                                <rect x="20" y="20" width="60" height="60" stroke="black" stroke-width="1" fill="white" />
+                                            </svg>
+                                            <h2 class="title-font font-medium text-xl text-gray-900">Concepts of Square</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
-
     @if($setupQuiz)
     <section class="text-gray-600 mx-auto body-font">
         <div class="container px-5 py-2 mx-auto">

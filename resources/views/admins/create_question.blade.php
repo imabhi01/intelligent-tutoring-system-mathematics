@@ -27,6 +27,25 @@
                                 <textarea name="explanation" type="text" class="mt-1 bg-gray-200 block w-full text-xs  bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="2">{{ old('explanation') }}</textarea>
                             </label>
                             <label class="block">
+                                <span class="text-gray-700">Keyword</span>
+                                @error('keyword')
+                                <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+                                @enderror
+                                <input name="keyword" type="text" class="mt-1 bg-gray-200 block w-full text-xs  bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"/>
+                            </label>
+                            <label class="block">
+                                <span class="text-gray-700">Select a Level for the question?</span>
+                                @error('is_level')
+                                <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+                                @enderror
+                                <select name="is_level" value="{{ old('is_level') }}" class="block w-1/2 mt-1 text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                                    <option value="">Please select a level</option>
+                                    <option value="BEGINNER">Beginner</option>
+                                    <option value="INTERMEDIATE">Intermediate</option>
+                                    <option value="ADVANCED">Advanced</option>
+                                </select>
+                            </label>
+                            <label class="block">
                                 <span class="text-gray-700">Is this question active?</span>
                                 @error('is_active')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
