@@ -128,7 +128,10 @@
                                     <thead class="tracking-wide font-bold rounded border-2 bg-green-500 text-white  transition shadow-md py-2 px-6 items-center">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Name
+                                                Level
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Question
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
                                                 Status
@@ -141,6 +144,9 @@
                                     <tbody class="capitalize bg-white divide-y divide-gray-200">
                                         @foreach($questions as $question)
                                         <tr class="hover:bg-green-100">
+                                            <td class="px-6 py-1">
+                                                <div class="text-sm text-white bg-green-400 rounded-xl text-center">{{ $question->is_level }}</div>
+                                            </td>
                                             <td class="px-6 ">
                                                 <div class="flex items-center">
                                                     <div class="ml-4">

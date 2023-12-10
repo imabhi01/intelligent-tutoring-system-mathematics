@@ -28,7 +28,7 @@
                         Circumference of Circle: C = 2πr
                     </p>
                     <p class="text-lg">
-                        Diameter of Circle: C = 2r
+                        Diameter of Circle: d = 2r
                     </p>
                     <p class="text-lg">
                        Where, π value is 22/7 = 3.14

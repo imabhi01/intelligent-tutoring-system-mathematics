@@ -36,7 +36,7 @@ class UserQuizlv extends Component
 
     const BEGINNER = 5;
     const INTERMEDIATE = 10;
-    const ADVANCED = 12;
+    const ADVANCED = 10;
 
     protected $rules = [
         'sectionId' => 'required',
@@ -65,9 +65,9 @@ class UserQuizlv extends Component
             }
         }
 
-        // if($this->inCorrectQuizAnswers >= 1){
+        if(count($this->inCorrectQuizAnswers) >= 1 ){
             $this->showFeedback = true;
-        // }
+        }
 
         // Caclculate score for upding the quiz_header table before finishing the quid.
         $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
