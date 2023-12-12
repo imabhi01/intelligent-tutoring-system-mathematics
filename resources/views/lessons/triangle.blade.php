@@ -11,7 +11,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto">
                 <section class="px-5 py-5 mx-auto">
-                    <img src="/images/triangle.png" width="450" height="450" alt="circle-image" style="margin: 0 auto">
+                    <img src="/images/triangle.png" width="450" height="450" alt="triangle-image" style="margin: 0 auto">
                     <h2 class="text-2xl font-semibold mb-3">Area of Triangle</h2>
                     <p class="text-lg">The area of a triangle can be calculated using various formulas. For example, Heron’s formula is used to calculate the triangle’s area, when we know the length of all three sides. Trigonometric functions are also used to find the area of a triangle when we know two sides and the angle formed between them. However, the basic formula that is used to find the area of a triangle is:</p>
                     <br>

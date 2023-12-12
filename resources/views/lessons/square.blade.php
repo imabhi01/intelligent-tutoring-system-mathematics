@@ -11,7 +11,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto">
                 <section class="px-5 py-5 mx-auto">
-                    <img src="/images/square.png" width="450" height="450" alt="rectangle-area" style="margin: 0 auto">
+                    <img src="/images/square.png" width="450" height="450" alt="square-image" style="margin: 0 auto">
                     <h2 class="text-2xl font-semibold mb-3">What is a Square</h2>
                     <p class="text-lg">
                     A square is a shape with four equal sides and four equal right angles. It's known as a type of quadrilateral which is a 

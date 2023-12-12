@@ -11,7 +11,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto">
                 <section class="px-5 py-5 mx-auto">
-                    <img src="/images/rectangle.png" width="450" height="450" alt="rectangle-area" style="margin: 0 auto">
+                    <img src="/images/rectangle.png" width="450" height="450" alt="rectangle-image" style="margin: 0 auto">
                     <h2 class="text-2xl font-semibold mb-3">What is a Rectangle</h2>
                     <p class="text-lg">
                     A rectangle is a 2D shape that has 4 sides, 4 corners, and 4 right angles. Opposite sides of a rectangle shape are the same length, 
