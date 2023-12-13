@@ -1,3 +1,3 @@
 <a href="/">
-    <img src="{{ asset('/images/logo.png') }}" alt="Quiz Site" style="width:120px; height:100px" />
+    <img src="{{ asset('/images/ITS-logo.png') }}" alt="Quiz Site" style="width:200px; height:170px" />
 </a>
