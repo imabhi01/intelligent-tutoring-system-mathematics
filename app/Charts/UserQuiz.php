@@ -29,7 +29,7 @@ class UserQuiz extends BaseChart
         $ids = [];
         foreach ($quizScores as $score) {
             array_push($scores, $score->score);
-            array_push($ids, $score->id);
+            array_push($ids, $score->id. ' Quiz Attempt');
         }
 
         return Chartisan::build()

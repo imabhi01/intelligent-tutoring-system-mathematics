@@ -174,7 +174,7 @@
                 .colors()
                 .beginAtZero()
                 .title('Quiz Scores')
-                .datasets(['line'])
+                .datasets(['bar'])
                 .stepSize(25)
                 .responsive()
         });
