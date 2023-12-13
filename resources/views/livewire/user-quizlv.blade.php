@@ -23,7 +23,7 @@
                     <div x-data={show:false} class="block text-xs">
                         <div class="p-1" id="headingOne">
                             <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none text-xs px-3" type="button">
-                                Explanation
+                                Hint
                             </button>
                         </div>
                         <div x-show="show" class="block p-2 bg-green-100 text-xs">
@@ -220,7 +220,7 @@
                             </div>
                             <div class="ml-3 text-sm">
                                 <label for="learningMode" class="font-medium text-gray-700">Learning Mode?</label>
-                                <p class="text-gray-500">If checked, this will enable explanation tab for each question.</p>
+                                <p class="text-gray-500">If checked, this will enable hint tab for each question.</p>
                             </div>
                         </div>
                         <div class="relative mb-4">
