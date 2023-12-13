@@ -2745,3 +2745,6 @@ select {
 	}
 }
 
+canvas.chartjs-render-monitor {
+    height: 240px !important;
+}
