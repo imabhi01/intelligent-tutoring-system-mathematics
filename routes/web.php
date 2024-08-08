@@ -6,7 +6,8 @@ use App\Http\Controllers\AppUserController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\QuestionsController;
-use App\Http\Controllers\UserLessonController;
+// use App\Http\Controllers\UserLessonController;
+use App\Http\Controllers\UserCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,19 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
         ->name('deleteQuestion');
 });
 
+Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('courses')->group(function () {
+
+    Route::get('/', [UserCourseController::class, 'index'])
+    ->name('courses');
+
+    Route::get('/createCourse', [UserCourseController::class, 'createCourse'])
+    ->name('createCourse');
+
+    Route::post('/storeCourse/section', [UserCourseController::class, 'storeCourse'])
+    ->name('storeCourse');
+
+});
+
 Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->group(function () {
 
     Route::get('/userQuizHome', [AppUserController::class, 'userQuizHome'])
@@ -82,19 +96,22 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->g
         ->name('startQuiz');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->group(function () {
-    Route::get('/', [UserLessonController::class, 'index'])
-    ->name('lessons');
+// Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->group(function () {
+//     Route::get('/', [UserLessonController::class, 'index'])
+//     ->name('lessons');
 
-    Route::get('/circle', [UserLessonController::class, 'circle'])
-    ->name('circle');
+//     Route::get('/circle', [UserLessonController::class, 'circle'])
+//     ->name('circle');
 
-    Route::get('/triangle', [UserLessonController::class, 'triangle'])
-    ->name('triangle');
+//     Route::get('/triangle', [UserLessonController::class, 'triangle'])
+//     ->name('triangle');
 
-    Route::get('/rectangle', [UserLessonController::class, 'rectangle'])
-    ->name('rectangle');
+//     Route::get('/rectangle', [UserLessonController::class, 'rectangle'])
+//     ->name('rectangle');
 
-    Route::get('/square', [UserLessonController::class, 'square'])
-    ->name('square');
-});
+//     Route::get('/square', [UserLessonController::class, 'square'])
+//     ->name('square');
+// });
+
+
+
