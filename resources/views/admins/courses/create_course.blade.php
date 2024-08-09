@@ -1,4 +1,7 @@
 <x-app-layout>
+    @push('scripts')
+        <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+    @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Create Course') }}
@@ -69,7 +72,7 @@
                                 @error('course.details')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <textarea name="course[details]" value="{{ old('course.details') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="3"></textarea>
+                                <textarea name="course[details]" value="{{ old('course.details') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 ckeditor" id="details" rows="3"></textarea>
                             </label>
                             <div class="flex items-center justify-end mt-4">
                                 <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>
@@ -84,4 +87,15 @@
             </div>
         </div>
     </div>
+    @push('js')
+        <script>
+            ClassicEditor.create( document.querySelector('#details') )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    @endpush
 </x-app-layout>
+
+
