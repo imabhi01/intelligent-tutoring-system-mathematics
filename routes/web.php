@@ -96,6 +96,10 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->g
         ->name('startQuiz');
 });
 
+Route::get('upload', function(){
+    return 'test';
+})->name('upload');
+
 // Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->group(function () {
 //     Route::get('/', [UserLessonController::class, 'index'])
 //     ->name('lessons');
