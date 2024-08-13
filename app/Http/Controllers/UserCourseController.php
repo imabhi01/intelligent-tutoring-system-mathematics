@@ -94,4 +94,13 @@ class UserCourseController extends Controller
         $course->delete();
         return redirect()->back()->withSuccess('Course: ' . $course->title . ' deleted successfully');
     }
+
+    public function course(){
+        $course = Course::find(4);
+        $latestCourses = Course::latest()
+            ->where('id', '!=', $course->id)
+            ->where(['level' => $course->level, 'category' => $course->category])
+            ->take(2)->get();
+        return view('admins.courses.course_detail', compact('course', 'latestCourses'));
+    }
 }

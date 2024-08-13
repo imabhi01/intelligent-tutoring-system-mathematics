@@ -67,9 +67,6 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
         ->name('storeQuestion');
     Route::post('/deleteQuestion/{id}', [QuestionsController::class, 'deleteQuestion'])
         ->name('deleteQuestion');
-});
-
-Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('courses')->group(function () {
 
     Route::get('/', [UserCourseController::class, 'index'])
     ->name('listCourse');
@@ -88,7 +85,6 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('courses')->g
 
     Route::post('/deleteCourse/{id}', [UserCourseController::class, 'deleteCourse'])
     ->name('deleteCourse');
-
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->group(function () {
@@ -127,3 +123,4 @@ Route::post('upload', [UploadController::class, 'upload'])->name('upload');
 
 
 
+Route::get('test', [UserCourseController::class, 'course']);
