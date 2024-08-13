@@ -26,8 +26,28 @@
                         {{ __('Add Course') }}
                     </x-jet-nav-link>
                     @endhasrole
+                    <div class="dropdown-selection-menu">
+                        <x-jet-nav-link class="dropdown" href="#">
+                            {{ __('Courses') }}
+                        </x-jet-nav-link>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ol>
+                                <?php 
+                                    $levels = App\Models\Level::LEVELS;
+                                ?>
+                                @foreach($levels as $key => $level)
+                                    <li>
+                                        <x-jet-nav-link class="dropdown-item" href="{{ route('listCourses', $level) }}" :active="request()->routeIs('listCourse')">
+                                            {{ $level }}
+                                        </x-jet-nav-link>
+                                    </li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    </div>
+                    
                     <x-jet-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
-                        {{ __('Play Quiz') }}
+                        {{ __('Take Quiz') }}
                     </x-jet-nav-link>
                     @endhasrole
                 </div>

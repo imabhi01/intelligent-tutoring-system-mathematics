@@ -102,6 +102,15 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->g
         ->name('startQuiz');
 });
 
+Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('courses')->group(function () {
+
+    Route::get('/list-course/{level}', [UserCourseController::class, 'listCourses'])
+        ->name('listCourses');
+
+    Route::get('/course-detail/{courseId}/{level}/{category}', [UserCourseController::class, 'courseDetail'])
+        ->name('courseDetail');
+});
+
 Route::post('upload', [UploadController::class, 'upload'])->name('upload');
 
 // Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->group(function () {
@@ -120,7 +129,3 @@ Route::post('upload', [UploadController::class, 'upload'])->name('upload');
 //     Route::get('/square', [UserLessonController::class, 'square'])
 //     ->name('square');
 // });
-
-
-
-Route::get('test', [UserCourseController::class, 'course']);
