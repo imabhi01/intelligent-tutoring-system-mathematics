@@ -8,6 +8,7 @@ use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\QuestionsController;
 // use App\Http\Controllers\UserLessonController;
 use App\Http\Controllers\UserCourseController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,13 +72,22 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
 Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('courses')->group(function () {
 
     Route::get('/', [UserCourseController::class, 'index'])
-    ->name('courses');
+    ->name('listCourse');
 
     Route::get('/createCourse', [UserCourseController::class, 'createCourse'])
     ->name('createCourse');
 
     Route::post('/storeCourse/section', [UserCourseController::class, 'storeCourse'])
     ->name('storeCourse');
+
+    Route::get('/editCourse/{id}', [UserCourseController::class, 'editCourse'])
+    ->name('editCourse');
+
+    Route::post('/updateCourse/{id}', [UserCourseController::class, 'updateCourse'])
+    ->name('updateCourse');
+
+    Route::post('/deleteCourse/{id}', [UserCourseController::class, 'deleteCourse'])
+    ->name('deleteCourse');
 
 });
 
@@ -96,9 +106,7 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->g
         ->name('startQuiz');
 });
 
-Route::get('upload', function(){
-    return 'test';
-})->name('upload');
+Route::post('upload', [UploadController::class, 'upload'])->name('upload');
 
 // Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('lessons')->group(function () {
 //     Route::get('/', [UserLessonController::class, 'index'])

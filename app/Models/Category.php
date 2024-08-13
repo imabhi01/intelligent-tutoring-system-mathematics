@@ -12,7 +12,8 @@ class Category extends Model
     protected $guarded = [];
 
     const CATEGORY = [
-        'Algebra', 
-        'Geometry'
+        'Algebra'   => 'ALGEBRA', 
+        'Geometry'  => 'GEOMETRY',
+        'Trignometry'  => 'TRIGNOMETRY',
     ];
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Level;
 use App\Models\Category;
+use Validator;
 
 class UserCourseController extends Controller
 {
@@ -21,6 +22,76 @@ class UserCourseController extends Controller
     }
 
     public function storeCourse(Request $request){
-        dd($request->all());
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'level' => 'required',
+            'category' => 'required',
+            'content' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $course = Course::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'level' => $request->level,
+            'category' => $request->category,
+            'content' => $request->content,
+            'status' => $request->status
+        ]);
+
+        session()->flash('success', 'Course saved successfully!');
+        return redirect()->back();
+    }
+
+    public function editCourse($id){
+        $levels = Level::LEVELS;
+        $categories = Category::CATEGORY;
+        $course = Course::find($id);
+        return view('admins.courses.edit_course', compact('levels', 'categories', 'course'));
+    }
+
+    public function updateCourse($id, Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'level' => 'required',
+            'category' => 'required',
+            'content' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $record = Course::findOrFail($id);
+
+        if(!$record){
+            abort(404);
+        }
+
+        $record->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'level' => $request->level,
+            'category' => $request->category,
+            'content' => $request->content,
+            'status' => $request->status
+        ]);
+
+        session()->flash('success', 'Section saved successfully!');
+        return redirect()->route('listCourse');
+    }
+
+    public function deleteCourse($id)
+    {
+        $course = Course::findOrFail($id);
+        $course->delete();
+        return redirect()->back()->withSuccess('Course: ' . $course->title . ' deleted successfully');
     }
 }

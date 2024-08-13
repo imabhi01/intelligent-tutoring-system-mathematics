@@ -33,13 +33,22 @@
                                     <thead class="tracking-wide font-bold rounded border-2 bg-green-500 text-white  transition shadow-md py-2 px-6 items-center">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Name
+                                                Title
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Published
+                                                Description
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Questions
+                                                Level
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Category
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Content
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Status
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
@@ -53,32 +62,59 @@
                                                 <div class="flex items-center">
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            <a class="text-blue-400 hover:underline" href="{{ route('detailSection', $section->id) }}">
-                                                                {{ $section->name}}
-                                                            </a>
+                                                            {{ $section->title}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 ">
+                                                <div class="flex items-center">
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{ $section->description}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 ">
+                                                <div class="flex items-center">
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{ $section->level}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 ">
+                                                <div class="flex items-center">
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{ $section->category}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 ">
+                                                <div class="flex items-center">
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {!! Str::words(strip_tags($section->content), 25) !!}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-1">
-                                                <div class="text-sm text-gray-900">{{ $section->is_active === '1'  ? 'Yes' : 'No' }}</div>
+                                                <div class="text-sm text-gray-900">{{ $section->status == '1'  ? 'Yes' : 'No' }}</div>
                                             </td>
-                                            <td class="px-6 py-1">
-                                                <div class="text-sm text-gray-900">{{ $section->questions_count }}</div>
-                                            </td>
+                                            
                                             <td class="sm:flex align-middle justify-center items-center px-6 py-1 text-right text-sm font-medium">
-                                                <a href="{{ route('createQuestion', $section->id )}}" class="text-green-500 hover:text-green-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 hover:text-blue-700 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                                <a href="{{ route('editSection', $section->id )}} " class="text-green-500 hover:text-green-700">
+                                                <a href="{{ route('editCourse', $section->id )}} " class="text-green-500 hover:text-green-700">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                                                         <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
                                                         <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
                                                     </svg>
                                                 </a>
-                                                <form action="{{route('deleteSection',$section->id)}}" method="post">
+                                                <form action="{{route('deleteCourse',$section->id)}}" method="post">
                                                     @csrf
                                                     <a class="text-red-500 hover:text-red-700">
                                                         <button type="submit">

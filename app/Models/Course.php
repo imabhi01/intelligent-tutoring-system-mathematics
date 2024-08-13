@@ -9,21 +9,5 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'content',
-        'is_active',
-    ];
-
-
     protected $guarded = [];
-
-    public function level(){
-        return $this->belongsTo(Level::class);
-    }
-
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
 }

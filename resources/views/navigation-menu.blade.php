@@ -21,7 +21,7 @@
                     <x-jet-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
                         {{ __('User Quiz Home') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('courses') }}" :active="request()->routeIs('courses')">
+                    <x-jet-nav-link href="{{ route('listCourse') }}" :active="request()->routeIs('listCourse')">
                         {{ __('Courses') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
@@ -156,7 +156,7 @@
             </x-jet-responsive-nav-link>
             @endhasrole
             @hasrole('user|admin|superadmin')
-            <x-jet-responsive-nav-link href="{{ route('courses') }}" :active="request()->routeIs('courses')">
+            <x-jet-responsive-nav-link href="{{ route('listCourse') }}" :active="request()->routeIs('listCourse')">
                 {{ __('Courses') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
