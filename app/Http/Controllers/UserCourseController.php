@@ -11,7 +11,7 @@ use Validator;
 class UserCourseController extends Controller
 {
     public function index(){
-        $courses = Course::paginate(10);
+        $courses = Course::latest()->paginate(10);
         return view('admins.courses.list_courses', compact('courses'));
     }
 
@@ -35,17 +35,26 @@ class UserCourseController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        if ($request->hasFile('featured_image')) {
+            $originName = $request->file('featured_image')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('featured_image')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+            $request->file('featured_image')->move(public_path('featuredImages'), $fileName);
+        }
+
         $course = Course::create([
             'title' => $request->title,
             'description' => $request->description,
             'level' => $request->level,
             'category' => $request->category,
             'content' => $request->content,
+            'featured_image' => $fileName,
             'status' => $request->status
         ]);
 
         session()->flash('success', 'Course saved successfully!');
-        return redirect()->back();
+        return redirect()->route('addCourse');
     }
 
     public function editCourse($id){
@@ -56,7 +65,6 @@ class UserCourseController extends Controller
     }
 
     public function updateCourse($id, Request $request){
-
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
@@ -75,17 +83,25 @@ class UserCourseController extends Controller
             abort(404);
         }
 
-        $record->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'level' => $request->level,
-            'category' => $request->category,
-            'content' => $request->content,
-            'status' => $request->status
-        ]);
+        if ($request->hasFile('featured_image')) {
+            $originName = $request->file('featured_image')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('featured_image')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+            $request->file('featured_image')->move(public_path('featuredImages'), $fileName);
+            $record->featured_image = $fileName;
+        }
 
-        session()->flash('success', 'Section saved successfully!');
-        return redirect()->route('listCourse');
+        $record->title = $request->title;
+        $record->description = $request->description;
+        $record->level = $request->level;
+        $record->category = $request->category;
+        $record->content = $request->content;
+        $record->status = $request->status;
+        $record->save();
+
+        session()->flash('success', 'Course saved successfully!');
+        return redirect()->route('addCourse');
     }
 
     public function deleteCourse($id)

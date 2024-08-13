@@ -15,7 +15,7 @@
                     <div class="col-lg-8">
                         <article class="article">
                             <div class="article-img">
-                                <img src="https://www.bootdey.com/image/800x350/87CEFA/000000" title="" alt="">
+                                <img style="margin: 0 auto;" src="{{ asset('/featuredImages/' . $course->featured_image) }}" title="Featured Image" alt="featured_image">
                             </div>
                             <div class="article-title">
                                 <h6><a href="#">{{ $course->title ?? ''}}</a></h6>
@@ -48,7 +48,8 @@
                                     </div>
                                     <div class="lpa-right">
                                         <a href="#">
-                                            <img src="https://www.bootdey.com/image/400x200/FFB6C1/000000" title="" alt="">
+                                            <img src="{{ asset('/featuredImages/' . $course->featured_image) }}" title="Featured Image" alt="featured_image" width="250px">
+                                            <!-- <img src="https://www.bootdey.com/image/400x200/FFB6C1/000000" title="" alt=""> -->
                                         </a>
                                     </div>
                                 </div>

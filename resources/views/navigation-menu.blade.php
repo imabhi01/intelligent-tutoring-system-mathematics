@@ -22,7 +22,7 @@
                         {{ __('User Quiz Home') }}
                     </x-jet-nav-link>
                     @hasrole('admin')
-                    <x-jet-nav-link href="#" :active="request()->routeIs('listCourse')">
+                    <x-jet-nav-link href="{{ route('addCourse') }}" :active="request()->routeIs('addCourse')">
                         {{ __('Add Course') }}
                     </x-jet-nav-link>
                     @endhasrole
@@ -37,7 +37,7 @@
                                 ?>
                                 @foreach($levels as $key => $level)
                                     <li>
-                                        <x-jet-nav-link class="dropdown-item" href="{{ route('listCourses', $level) }}" :active="request()->routeIs('listCourse')">
+                                        <x-jet-nav-link class="dropdown-item" href="{{ route('listCourses', $level) }}" :active="request()->routeIs('listCourses')">
                                             {{ $level }}
                                         </x-jet-nav-link>
                                     </li>
@@ -178,7 +178,7 @@
             </x-jet-responsive-nav-link>
             @endhasrole
             @hasrole('user|admin|superadmin')
-            <x-jet-responsive-nav-link href="{{ route('listCourse') }}" :active="request()->routeIs('listCourse')">
+            <x-jet-responsive-nav-link href="{{ route('addCourse') }}" :active="request()->routeIs('addCourse')">
                 {{ __('Add Course') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">

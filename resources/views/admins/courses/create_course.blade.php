@@ -22,9 +22,8 @@
                 <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Course</h2>
                 <div class="mt-2 max-w-auto mx-auto card p-4 bg-white rounded-b-lg shadow-md">
                     <div class="grid grid-cols-1 gap-6">
-                        <form action="{{route('storeCourse')}}" method="post">
+                        <form action="{{route('storeCourse')}}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <label class="block">
                                 <span class="text-gray-700">Course Title</span>
                                 @error('course.name')
@@ -66,6 +65,22 @@
                                     @endforeach
                                 </select>
                             </label>
+                            
+                            <label class="block">
+                                <span class="text-gray-700">Featured Image</span>
+                                @error('course.featured_image')
+                                <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+                                @enderror
+                                <input type="file" name="featured_image" value="{{ old('course.featured_image') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 ckeditor" id="featured_image" />
+                            </label>
+
+                            <label class="block">
+                                <span class="text-gray-700">Course Content</span>
+                                @error('course.content')
+                                <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+                                @enderror
+                                <textarea name="content" value="{{ old('course.content') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 ckeditor" id="content" rows="3"></textarea>
+                            </label>
 
                             <label class="block">
                                 <span class="text-gray-700">Is this course active?</span>
@@ -76,13 +91,6 @@
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>
-                            </label>
-                            <label class="block">
-                                <span class="text-gray-700">Course Content</span>
-                                @error('course.content')
-                                <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
-                                @enderror
-                                <textarea name="content" value="{{ old('course.content') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 ckeditor" id="content" rows="3"></textarea>
                             </label>
                             <div class="flex items-center justify-end mt-4">
                                 <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>

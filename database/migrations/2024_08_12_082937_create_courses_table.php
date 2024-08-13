@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('description')->nullable();
             $table->string('level');
             $table->string('category')->nullable();
-            $table->string('feature_image')->nullable();
+            $table->string('featured_image')->nullable();
             $table->text('content')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

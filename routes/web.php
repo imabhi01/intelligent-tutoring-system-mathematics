@@ -68,8 +68,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
     Route::post('/deleteQuestion/{id}', [QuestionsController::class, 'deleteQuestion'])
         ->name('deleteQuestion');
 
-    Route::get('/', [UserCourseController::class, 'index'])
-    ->name('listCourse');
+    Route::get('/addCourse', [UserCourseController::class, 'index'])
+    ->name('addCourse');
 
     Route::get('/createCourse', [UserCourseController::class, 'createCourse'])
     ->name('createCourse');
