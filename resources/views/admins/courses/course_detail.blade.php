@@ -7,7 +7,6 @@
         </div>
     </x-slot>
 
-
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="container">
