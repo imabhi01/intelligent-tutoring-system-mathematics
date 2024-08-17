@@ -21,7 +21,6 @@
                                 <h2>{{ $course->description ?? '' }}</h2>
                                 {!! $course->content !!}
                             </div>
-                            
                             <div class="nav tag-cloud">
                                 <a href="#">{{$course->level}}</a>
                                 <a href="#">{{$course->category}}</a>
