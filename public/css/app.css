@@ -3177,3 +3177,8 @@ margin-top: 20px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+img.d-flex.rounded-md.shadow-sm {
+    width: 100px;
+    height: 100px;
+}

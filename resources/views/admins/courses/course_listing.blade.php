@@ -15,7 +15,7 @@
                 <div class="col-md-6 px-2 py-2">
                     <div class="media blog-media">
                     <a href="{{ route('courseDetail', [$course->id, $level, $course->category]) }}">
-                        <img class="d-flex rounded-md shadow-sm" src="{{ asset('/featuredImages/' . $course->featured_image) }}" title="Featured Image" alt="featured_image" width="200px">
+                        <img class="d-flex rounded-md shadow-sm" src="{{ asset('/featuredImages/' . $course->featured_image) }}" title="Featured Image" alt="featured_image" width="100px" height="200px">
                         <!-- <img class="d-flex rounded-md shadow-sm" src="https://www.bootdey.com/image/350x380/6495ED/000000" alt="Generic placeholder image"></a> -->
                     <div class="circle flex">
                         <h5 class="day">14</h5>

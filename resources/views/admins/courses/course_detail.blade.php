@@ -18,6 +18,13 @@
                             </div>
                             <div class="article-title">
                                 <h6><a href="#">{{ $course->title ?? ''}}</a></h6>
+                                
+                                @if(isset($course->youtube_url))
+                                    <br>
+                                    <iframe style="margin: 0 auto;" width="900" height="315" src="{{ $course->youtube_url ?? '' }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    <br>
+                                @endif
+                        
                                 <h2>{{ $course->description ?? '' }}</h2>
                                 {!! $course->content !!}
                             </div>

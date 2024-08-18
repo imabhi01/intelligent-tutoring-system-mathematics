@@ -26,6 +26,7 @@ class UserCourseController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
+            'youtube_url' => 'sometimes',
             'level' => 'required',
             'category' => 'required',
             'content' => 'required'
@@ -46,6 +47,7 @@ class UserCourseController extends Controller
         $course = Course::create([
             'title' => $request->title,
             'description' => $request->description,
+            'youtube_url' => $request->youtube_url,
             'level' => $request->level,
             'category' => $request->category,
             'content' => $request->content,
@@ -68,6 +70,7 @@ class UserCourseController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
+            'youtube_url' => 'sometimes',
             'level' => 'required',
             'category' => 'required',
             'content' => 'required'
@@ -94,6 +97,7 @@ class UserCourseController extends Controller
 
         $record->title = $request->title;
         $record->description = $request->description;
+        $record->youtube_url = $request->youtube_url;
         $record->level = $request->level;
         $record->category = $request->category;
         $record->content = $request->content;
