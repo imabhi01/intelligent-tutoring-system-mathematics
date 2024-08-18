@@ -14,6 +14,7 @@ class Level extends Model
         "six"   => 'SIX', 
         "seven" => 'SEVEN', 
         "eight" => 'EIGHT', 
-        "nine"  => 'NINE'
+        "nine"  => 'NINE',
+        "ten"  =>  'TEN',
     ];
 }
