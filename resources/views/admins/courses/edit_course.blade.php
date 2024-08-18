@@ -46,7 +46,7 @@
                                 @error('course.youtube_url')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <input name="youtube_url" value="{{ $course->youtube_url ?? '' }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <input name="youtube_url" value="{{ $course->youtube_url ?? '' }}" type="url" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                             </label>
 
                             <label class="block">
