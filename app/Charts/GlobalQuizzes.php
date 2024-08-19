@@ -25,6 +25,7 @@ class GlobalQuizzes extends BaseChart
 
         $scores = [];
         $ids = [];
+        
         foreach ($quizScores as $score) {
             array_push($scores, $score->score);
             array_push($ids, $score->id);
