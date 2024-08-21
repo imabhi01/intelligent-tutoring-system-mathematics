@@ -16,8 +16,10 @@ class UserCourseController extends Controller
     }
 
     public function createCourse(){
+        
         $levels = Level::LEVELS;
         $categories = Category::CATEGORY;
+
         return view('admins.courses.create_course', compact('levels', 'categories'));
     }
 
